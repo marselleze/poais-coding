@@ -59,6 +59,4 @@ int main() {
     } else {
         cout << " PM" << endl;
     }
-
-    return 0;
 }
