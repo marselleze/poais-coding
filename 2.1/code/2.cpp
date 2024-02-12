@@ -4,8 +4,9 @@
 
 using namespace std;
 
-void reroll(int mas1[], int mas2[], int k, int t, int n, int m){
+void reroll(int* mas1, int* mas2, int k, int t, int n, int m){
     bool condition1 = true;
+    // Проверка условия для первого массива
     for (int i = 0; i < n; i++){
         if (mas1[i] > k){
             condition1 = false;
@@ -13,13 +14,14 @@ void reroll(int mas1[], int mas2[], int k, int t, int n, int m){
         }
     }
     bool condition2 = true;
+    // Проверка условия для второго массива
     for (int i = 0; i < m; i++){
         if (mas2[i] > t){
             condition2 = false;
             break;
         }
     }
-
+    // Замена значений
     if (condition1){
         for(int i = 0; i < n; i++){
             if(mas1[i] == k){
@@ -27,7 +29,7 @@ void reroll(int mas1[], int mas2[], int k, int t, int n, int m){
             }
         }
     }
-    else if (condition2){
+    else{
         for(int i = 0; i < m; i++){
             if(mas2[i] == t){
                 mas2[i] = k;
