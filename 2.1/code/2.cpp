@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-
+// TODO: Написать 2 функции(одну для проверки условий, вторую для замены значений в массивах)
 void reroll(int* mas1, int* mas2, int k, int t, int n, int m){
     bool condition1 = true;
     // Проверка условия для первого массива
