@@ -6,12 +6,6 @@
 using namespace std;
 
 void Time24ToTime12(int* H, int* M, int* S, bool* am) {
-    // Проверка на корректность входных данных
-    if (H == nullptr || M == nullptr || S == nullptr || am == nullptr) {
-        cout << "Ошибка: Нулевой указатель." << endl;
-        return;
-    }
-
     // Устанавливаем признак принадлежности первой половине суток
     *am = (*H < 12);
 
@@ -39,7 +33,7 @@ int main() {
     Time24ToTime12(pT1, pM1, pS1, pam1);
 
     // Преобразование второго временного отрезка
-    int* pT2 = &T2;
+    int* pT2 = &T2; 
     int* pM2 = &M2;
     int* pS2 = &S2;
     bool* pam2 = &am2;

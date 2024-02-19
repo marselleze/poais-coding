@@ -28,6 +28,7 @@ double calculateProd(double x, int n, int i){
 int main(){
     double x = 0;
     int n = 0;
+    int i = 0;
 
     cout << "Enter x: ";
     cin >> x;
@@ -37,6 +38,6 @@ int main(){
 
     cout << "Result of programm: " << endl;
 
-    double result = calculateProd(x, n, 0);
+    double result = calculateProd(x, n, i);
     cout << result;
 }
