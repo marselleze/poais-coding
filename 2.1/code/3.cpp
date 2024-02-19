@@ -22,7 +22,7 @@ double calculateProd(double x, int n, int i){
         return 1.0;
     }
 
-    return calculateSum(x, n, i, 1) + calculateProd(x, n, i + 1);
+    return calculateSum(x, n, i, 1) * calculateProd(x, n, i + 1);
 }
 
 int main(){
