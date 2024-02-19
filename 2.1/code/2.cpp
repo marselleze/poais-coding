@@ -3,8 +3,37 @@
 #include <iostream>
 
 using namespace std;
-// TODO: Написать 2 функции(одну для проверки условий, вторую для замены значений в массивах)
-void reroll(int* mas1, int* mas2, int k, int t, int n, int m){
+
+bool check(int* mas, int k){
+    bool condition = true;
+    for (int i = 0; i < sizeof(mas); i++){
+        if (mas[i] > k){
+            condition = false;
+            break;
+        }
+    }
+    return condition;
+}
+
+void repl(int* mas, int k, int t){
+    if (check(mas, k)){
+        for(int i = 0; i < sizeof(mas); i++){
+            if(mas[i] == k){
+                mas[i] = t;
+            }
+        }
+    }
+    else{
+        for(int i = 0; i < sizeof(mas); i++){
+            if(mas[i] == t){
+                mas[i] = k;
+            }
+        }
+    }
+
+
+}
+/*void reroll(int* mas1, int* mas2, int k, int t, int n, int m){
     bool condition1 = true;
     // Проверка условия для первого массива
     for (int i = 0; i < n; i++){
@@ -38,7 +67,8 @@ void reroll(int* mas1, int* mas2, int k, int t, int n, int m){
     }
 
 
-}
+}*/
+
 
 int main(){
     int n, m;
@@ -61,7 +91,8 @@ int main(){
         cin >> arr2[i];
     }
 
-    reroll(arr1, arr2, k, t, n, m);
+    repl(arr1, k, t);
+    repl(arr2, k, t);
     
     cout << "Result of work: " << endl;
     for (int i = 0; i < n; i++){
