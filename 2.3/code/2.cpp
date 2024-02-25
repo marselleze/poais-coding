@@ -2,17 +2,37 @@
 
 #include <iostream>
 #include <string>
+#include <bits/stdc++.h>
+#include <vector>
+
 
 using namespace std;
 
-int main(){
-    cout << "Enter the text: " << endl;
-    string Text;
-    getline(cin, Text);
 
-    int count[26] = {0};
+using namespace std;
+ 
+int main()
+{
+    string str = "Geeks for Geeks";
+ 
+    vector <string> v;
+ 
+    int start, end;
+    start = end = 0;
+    int letterCount[52] = {0};
+ 
+    char dl = ' ';
+ 
+    while ((start = str.find_first_not_of(dl, end)) != string::npos) {
+        
+        end = str.find(dl, start);
+        
+        v.push_back(str.substr(start, end - start));
+    }
 
-    char* p;
-    p = strtok(Text, " ");
+    for()
+ 
     
+ 
+    return 0;
 }
