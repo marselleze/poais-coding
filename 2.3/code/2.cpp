@@ -6,7 +6,9 @@
 
 
 int main() {
-    std::string text = "Programming is Fun and Challenging";
+    std::cout << "Enter the text in english languge: " << std::endl;
+    std::string text = "";
+    getline(std::cin, text);
     int upperLetterCount[26] = {0};  // Для букв верхнего регистра ('A' - 'Z')
     int lowerLetterCount[26] = {0};  // Для букв нижнего регистра ('a' - 'z')
     std::vector<std::string> words;
