@@ -1,62 +1,53 @@
 #include <iostream>
 #include <string>
-
-using namespace std;
+#include <vector>
+#include <cctype>
 
 int main() {
-    // Считываем текст
-    cout << "Введите текст на английском языке: ";
-    string inputText;
-    getline(cin, inputText);
+    std::string text = "Programming is Fun and Challenging";
+    int upperLetterCount[26] = {0};  // Для букв верхнего регистра ('A' - 'Z')
+    int lowerLetterCount[26] = {0};  // Для букв нижнего регистра ('a' - 'z')
+    std::vector<std::string> words;
 
-    // Инициализируем массив для хранения информации о встречаемости букв
-    int letterCount[26] = {0};
+    size_t startPos = 0;
+    size_t spacePos = text.find(' ');
 
-    // Разбиваем текст на слова
-    string word;
-    size_t wordStart = 0;
-    for (size_t i = 0; i <= inputText.length(); ++i) {
-        if (i == inputText.length() || !isalpha(inputText[i])) {
-            // Найден конец слова
-            if (wordStart < i) {
-                for (size_t j = wordStart; j < i; ++j) {
-                    char currentChar = tolower(inputText[j]);
-                    letterCount[currentChar - 'a']++;
-                }
+    while (spacePos != std::string::npos) {
+        words.push_back(text.substr(startPos, spacePos - startPos));
+        startPos = spacePos + 1;
+        spacePos = text.find(' ', startPos);
+    }
+
+    words.push_back(text.substr(startPos));
+
+    for (const std::string& word : words) {
+        for (char letter : word) {
+            if (std::isupper(letter)) {
+                upperLetterCount[letter - 'A']++;
+            } else if (std::islower(letter)) {
+                lowerLetterCount[letter - 'a']++;
             }
-
-            // Начинаем следующее слово
-            wordStart = i + 1;
         }
     }
 
-    // Выводим результат
-    for (char letter = 'a'; letter <= 'z'; ++letter) {
-        cout << letter << " - " << letterCount[letter - 'a'] << ": ";
-        bool found = false;
-        wordStart = 0;
-        for (size_t i = 0; i <= inputText.length(); ++i) {
-            if (i == inputText.length() || !isalpha(inputText[i])) {
-                if (wordStart < i) {
-                    for (size_t j = wordStart; j < i; ++j) {
-                        char firstChar = tolower(inputText[j]);
-                        if (firstChar == letter) {
-                            if (found) {
-                                cout << ", ";
-                            }
-                            cout << inputText.substr(wordStart, i - wordStart);
-                            found = true;
-                            break;
-                        }
-                    }
-                }
-                wordStart = i + 1;
+    for (char letter = 'A'; letter <= 'Z'; ++letter) {
+        std::cout << letter << " - " << upperLetterCount[letter - 'A'] << ": ";
+        for (const std::string& word : words) {
+            if (word.find(letter) != std::string::npos) {
+                std::cout << word << " ";
             }
         }
-        if (!found) {
-            cout << "No words";
+        std::cout << std::endl;
+    }
+
+    for (char letter = 'a'; letter <= 'z'; ++letter) {
+        std::cout << letter << " - " << lowerLetterCount[letter - 'a'] << ": ";
+        for (const std::string& word : words) {
+            if (word.find(letter) != std::string::npos) {
+                std::cout << word << " ";
+            }
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 
     return 0;
