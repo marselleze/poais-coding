@@ -6,18 +6,28 @@
 using namespace std;
 
 int main(){
-    double count;
-    string str;
-    
+     std::string inputText;
 
-    getline(cin, str);
+    // Ввод текста
+    std::cout << "Input text: ";
+    std::getline(std::cin, inputText);
 
-    for(int i = 0; str[i] && i < str.size(); i++){
-        if(str[i] == 'a'){
-            count++;
-        }
+    size_t pos = inputText.find_first_of("aA");
+    size_t countA3 = 0;
+    while (pos != std::string::npos) {
+        countA3++;
+        pos = inputText.find_first_of("aA", pos + 1);
     }
-    double len = str.size();
-    double freq = len / count;
-    cout << freq;
+
+    // Вычисление длины текста (учитывая пробелы)
+    size_t textLength = inputText.size();
+
+    // Проверка деления на ноль перед вычислением частоты
+    double frequency = (textLength > 0) ? static_cast<double>(countA3) / textLength : 0.0;
+
+    // Вывод результата
+    std::cout << "Frequency of 'a': " << frequency << std::endl;
+
+    return 0;
+
 }
