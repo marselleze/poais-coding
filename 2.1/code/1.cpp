@@ -39,6 +39,7 @@ int main() {
     bool* pam2 = &am2;
     Time24ToTime12(pT2, pM2, pS2, pam2);
 
+
     // Вывод результатов
     cout << "fst time interval: " << T1 << ":" << M1 << ":" << S1;
     if (am1) {
